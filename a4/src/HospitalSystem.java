@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 import java.util.TreeMap;
 import java.util.Scanner;
 import java.util.Collection;
@@ -246,12 +247,11 @@ public class HospitalSystem
 
     /**
      * Display the empty beds for the ward.
-     * Method is just a stub, needs to be implemented
      */
     public void displayEmptyBeds()
     {
-        // TODO: implement stub
-        System.out.println("TODO: method not complete");
+        LinkedList<Integer> emptyBeds = this.ward.availableBeds();
+        System.out.println("Beds currently available:\n" + emptyBeds);
     }
 
 

@@ -1,0 +1,91 @@
+@startuml
+
+title __A3's Class Diagram__\n
+
+skinparam classAttributeIconSize 0
+
+package Provided_Classes <<Rectangle>> {
+    class BasicDoctor {
+        - name : String
+        + getName(): String
+        {static} + main(args: String[])
+    }
+
+    class Person {
+        - name : String
+        - healthNum : int
+        + getName(): String
+        + getHealthNumber(): int
+        + setName(newName: String)
+        {static} + main(args: String[])
+    }
+
+    class Ward {
+        - name : String
+        - minBedLabel : int
+        - beds : Patient[]
+        + getName(): String
+        + getMinBedLabel(): int
+        + getMaxBedLabel(): int
+        + isValidLabel(bedLabel: int): boolean
+        - externalToInternalIndex(bedLabel: int): int
+        - internalToExternalLabel(arrayIndex: int): int
+        + isOccupied(bedLabel: int): boolean
+        + assignPatientToBed(p: Patient, bedLabel: int)
+        + getPatient(bedLabel: int): Patient
+        + availableBeds(): ArrayList<Integer>
+        + freeBed(bedLabel: int)
+        {static} + main(args: String[])
+    }
+}
+
+class Doctor {
+    # patients : HashMap<Integer, Patient>
+    + addPatient(p: Patient)
+    + removePatient(healthNum: int)
+    + hasPatient(healthNum: int): boolean
+    {static} + main(args: String)
+}
+  
+
+class HospitalSystem {
+    - patients : HashMap<Integer, Patient>
+    - doctors : HashMap<String, Doctor>
+    + addPatient(name: String, healthNumber: int)
+    + addDoctor(name: String)
+    + assignDoctorToPatient(docName: String, pntNumber: int)
+    + assignPatient(pntNumber: int, bedLabel: int)
+    + displayEmptyBeds()
+    + dropAssociation(docName: String, pntNumber: int)
+    + releasePatient(pntNumber: int)
+    + systemState()
+    {static} - promptHealthNumber(scan: Scanner, sys HospitalSystem): int
+    {static} - promptDoctorName(scan: Scanner, sys HospitalSystem): int
+    {static} + main(args: String[])
+}
+
+class Patient {
+    - bedLabel : int
+    # doctors : HashMap<String, Doctor>
+    + getBedLabel(): int
+    + setBedLabel(bedLabel: int): int
+    + addDoctor(d: Doctor)
+    + removeDoctor(name: String)
+    + hasDoctor(name: String): boolean
+    {static} + main(args: String[])
+}
+
+class Surgeon {
+    {static} + main(args: String[])
+}
+
+  Doctor -|> BasicDoctor
+  HospitalSystem --> Ward
+  HospitalSystem o-- Patient
+  HospitalSystem o-- Doctor
+  Ward o-up- Patient
+  Patient -|> Person
+  Surgeon -up|> Doctor
+  Patient <.> Doctor
+
+@enduml

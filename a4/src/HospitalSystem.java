@@ -257,13 +257,32 @@ public class HospitalSystem
 
     /**
      * Release a patient from the ward.
-     * Method is just a stub, needs to be implemented
      */
     public void releasePatient()
     {
-        // TODO: implement stub
-        System.out.println("TODO: method not complete");
+        Scanner consoleIn = new Scanner(System.in);
 
+        System.out.println("Releasing a patient from the system...");
+        System.out.println("Getting Patient information...");
+        System.out.print("Enter the health number of the patient: ");
+        int healthNumber = consoleIn.nextInt();
+        consoleIn.nextLine();  // discard the remainder of the line
+
+        Patient p = patients.get(healthNumber);
+        if (p == null)
+            throw new RuntimeException("There is no patient with health number "
+                    + healthNumber);
+        //Clears any doctors assigned to patient
+        for (Doctor d : this.doctors.values()) {
+            if (p.hasDoctor(d.getName())) { d.removePatient(p.getHealthNumber()); }
+        }
+        //Frees any bed the patient is assigned to
+        if (p.getBedLabel() != -1) {
+            ward.freeBed(p.getBedLabel());
+        }
+
+        patients.remove(p.getHealthNumber());
+        System.out.println(p.getName() + " has been released from the system.");
     }
 
     /**

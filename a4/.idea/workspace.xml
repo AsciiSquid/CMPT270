@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64eb2486-3e4f-448d-9b87-8f6463de5a10" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="64eb2486-3e4f-448d-9b87-8f6463de5a10" name="Default Changelist" comment="HospitalSystem:&#10;+ Completed method release()">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HospitalSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HospitalSystem.java" afterDir="false" />
     </list>
@@ -22,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HospitalSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="253" column="38" lean-forward="true" selection-start-line="253" selection-start-column="38" selection-end-line="253" selection-end-column="38" />
+            <state relative-caret-position="189">
+              <caret line="258" column="39" selection-start-line="258" selection-start-column="39" selection-end-line="258" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -122,27 +121,36 @@
       <option name="presentableId" value="Default" />
       <updated>1559572269768</updated>
     </task>
+    <task id="LOCAL-00001" summary="HospitalSystem:&#10;+ Completed method displayEmptyBeds()">
+      <created>1559580877477</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1559580877477</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1552" height="840" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533512" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32909605" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32909605" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32909605" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -156,6 +164,10 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="HospitalSystem:&#10;+ Completed method displayEmptyBeds()" />
+    <option name="LAST_COMMIT_MESSAGE" value="HospitalSystem:&#10;+ Completed method displayEmptyBeds()" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/AbstractDialogIO.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -166,8 +178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/HospitalSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="253" column="38" lean-forward="true" selection-start-line="253" selection-start-column="38" selection-end-line="253" selection-end-column="38" />
+        <state relative-caret-position="189">
+          <caret line="258" column="39" selection-start-line="258" selection-start-column="39" selection-end-line="258" selection-end-column="39" />
         </state>
       </provider>
     </entry>

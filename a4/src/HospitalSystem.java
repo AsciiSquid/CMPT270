@@ -26,12 +26,12 @@ public class HospitalSystem
 
     /**
      * Initialize an instance of the hospital ward
-     * relies on user-input to get the relavent information
+     * relies on user-input to get the relevant information
      */
     public HospitalSystem() {
 
-        patients = new TreeMap<Integer, Patient>();
-        doctors = new TreeMap<String, Doctor>();
+        patients = PatientMapAccess.dictionary();
+        doctors = DoctorMapAccess.dictionary();
 
         // get the ward information
         Scanner consoleIn = new Scanner(System.in);
@@ -47,7 +47,9 @@ public class HospitalSystem
         System.out.print("Enter the integer label of the last bed: ");
         int lastBedNum = consoleIn.nextInt();
         consoleIn.nextLine();
-        ward = new Ward(name, firstBedNum, lastBedNum);
+
+        WardAccess.initialize(name, firstBedNum, lastBedNum);
+        ward = WardAccess.ward();
     }
 
     /**

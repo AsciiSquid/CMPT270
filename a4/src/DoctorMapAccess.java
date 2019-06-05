@@ -1,4 +1,4 @@
-//Dawson Wiebe drw529
+//Dawson Wiebe drw529 11226441
 import java.util.TreeMap;
 
 public class DoctorMapAccess {
@@ -12,5 +12,4 @@ public class DoctorMapAccess {
         }
         return dictionary;
     }
-
 }

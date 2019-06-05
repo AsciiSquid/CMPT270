@@ -227,8 +227,7 @@ public class HospitalSystem
      */
     public void displayEmptyBeds()
     {
-        LinkedList<Integer> emptyBeds = this.ward.availableBeds();
-        System.out.println("Beds currently available:\n" + emptyBeds);
+        new EmptyBeds();
     }
 
 

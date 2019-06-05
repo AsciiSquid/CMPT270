@@ -1,0 +1,150 @@
+//Dawson Wiebe drw529 11226441
+"C:\Program Files\Java\jdk-12.0.1\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ\lib\idea_rt.jar=54271:C:\Program Files\JetBrains\IntelliJ\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\Owner\Assignments\CMPT270\a4\out\production\a4 HospitalSystem
+Initializing the system...
+Getting Ward information...
+Enter the name of the Ward: example
+Enter the integer label of the first bed: 1
+Enter the integer label of the last bed: 5
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 2
+Getting Patient information...
+Enter the name of the patient: Test Dummy
+Enter the health number of the patient: 1234
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 3
+Getting Patient information...
+Enter the name of the doctor: Dr. Strange
+Is the doctor a surgeon? (yes or no)yes
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 4
+Assigning a new Doctor-Patient Association...
+Getting Patient information...
+Enter the health number of the patient: 1234
+Getting Doctor information...
+Enter the name of the doctor: Dr. Strange
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 5
+Beds currently available:
+[1, 2, 3, 4, 5]
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 6
+Assigning a Patient to a Bed...
+Getting Patient information...
+Enter the health number of the patient: 1234
+Enter the bed number for the patient: 2
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 5
+Beds currently available:
+[1, 3, 4, 5]
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 7
+Releasing a patient from the system...
+Getting Patient information...
+Enter the health number of the patient: 1234
+Test Dummy has been released from the system.
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 5
+Beds currently available:
+[1, 2, 3, 4, 5]
+Please select an operation to do
+1: quit
+2: add a new patient
+3: add a new doctor
+4: assign a doctor to a patient
+5: display the empty beds of the ward
+6: assign a patient a bed
+7: release a patient
+8: drop doctor-patient association
+9: display current system state
+Enter the number of your selection: 1
+
+The patients in the system are 
+
+The doctors in the system are 
+
+Surgeon
+Name: Dr. Strange
+Patients: 
+
+The ward is 
+Ward example with capacity 5 has the following patients: 
+bed 1: 
+bed 2: 
+bed 3: 
+bed 4: 
+bed 5: 
+
+
+Process finished with exit code 0

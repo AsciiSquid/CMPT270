@@ -172,29 +172,11 @@ public class HospitalSystem
         int healthNumber = consoleIn.nextInt();
         consoleIn.nextLine();  // discard the remainder of the line
 
-        Patient p = patients.get(healthNumber);
-        if (p == null)
-            throw new RuntimeException("There is no patient with health number "
-                    + healthNumber);
-
         System.out.println("Getting Doctor information...");
         System.out.print("Enter the name of the doctor: ");
         String name = consoleIn.nextLine();
 
-        Doctor d = doctors.get(name);
-        if (d == null)
-            throw new RuntimeException("There is no doctor with name " + name);
-
-        int pHealthNumber = p.getHealthNumber();
-        if (!d.hasPatient(pHealthNumber))
-            throw new RuntimeException("This doctor is not associated with this patient.");
-        if (!p.hasDoctor(name))
-            throw new RuntimeException("This doctor and this patient are incorrectly "
-                    + "associated.  The doctor has the patient, "
-                    + "but the patient does not have the doctor");
-
-        p.removeDoctor(name);
-        d.removePatient(healthNumber);
+        new DropDoctor(healthNumber, name);
     }
 
     /**

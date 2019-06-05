@@ -24,7 +24,7 @@ public class HospitalSystem
      */
     private Ward ward;
 
-    private static InputOutputInterface ioInterface;
+    protected static InputOutputInterface ioInterface;
 
     /**
      * Initialize an instance of the hospital ward
@@ -255,23 +255,23 @@ public class HospitalSystem
         int task = -1;
 
         HospitalSystem sys = new HospitalSystem();
+        //TEMP: to test consoleIO class
+        ioInterface = new ConsoleIO(consoleIn);
 
+        String[] taskOptions = {
+                "quit"
+                ,"add a new patient"
+                ,"add a new doctor"
+                ,"assign a doctor to a patient"
+                ,"display the empty beds of the ward"
+                ,"assign a patient a bed"
+                ,"release a patient"
+                ,"drop doctor-patient association"
+                ,"display current system state"
+        };
         try{
             while(task != 1) {
-                System.out.print("Please select an operation to do"
-                        + "\n1: quit"
-                        + "\n2: add a new patient"
-                        + "\n3: add a new doctor"
-                        + "\n4: assign a doctor to a patient"
-                        + "\n5: display the empty beds of the ward"
-                        + "\n6: assign a patient a bed"
-                        + "\n7: release a patient"
-                        + "\n8: drop doctor-patient association"
-                        + "\n9: display current system state"
-                        + "\nEnter the number of your selection: ");
-
-                task = consoleIn.nextInt();
-                consoleIn.nextLine();
+                task = ioInterface.readChoice(taskOptions);
 
                 if (task == 1)
                     sys.systemState();

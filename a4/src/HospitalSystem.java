@@ -24,6 +24,8 @@ public class HospitalSystem
      */
     private Ward ward;
 
+    private static InputOutputInterface ioInterface;
+
     /**
      * Initialize an instance of the hospital ward
      * relies on user-input to get the relevant information

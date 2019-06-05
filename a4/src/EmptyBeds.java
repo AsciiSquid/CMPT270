@@ -1,3 +1,4 @@
+//Dawson Wiebe drw529 11226441
 public class EmptyBeds extends CommandStatus {
     public EmptyBeds() {
         Ward ward;

@@ -1,8 +1,16 @@
 //Dawson Wiebe drw529 11226441
 import java.util.TreeMap;
 
+/**
+ * Executes the newDoctor command for the HospitalSystem and stores the result
+ */
 public class NewDoctor extends CommandStatus{
 
+    /**
+     * Executes the task and stores the result
+     * @param name - name of the Doctor
+     * @param isSurgeon - determines if the new doctor is part of the Surgeon subclass
+     */
     public NewDoctor(String name, boolean isSurgeon) {
         TreeMap<String, Doctor> dictionary = DoctorMapAccess.dictionary();
         if (dictionary.containsKey(name)) {

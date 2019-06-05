@@ -1,7 +1,15 @@
 //Dawson Wiebe drw529 11226441
 import java.util.TreeMap;
 
+/**
+ * Executes the drop doctor command for the HospitalSystem and stores the result
+ */
 public class DropDoctor extends CommandStatus {
+    /**
+     * Executes the task and stores the result
+     * @param healthNum - health number of a Patient
+     * @param docName - name of a Doctor
+     */
     public DropDoctor(int healthNum, String docName) {
         TreeMap<Integer, Patient> patientDict = PatientMapAccess.dictionary();
         TreeMap<String, Doctor> doctorDict = DoctorMapAccess.dictionary();

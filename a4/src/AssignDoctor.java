@@ -1,7 +1,15 @@
 //Dawson Wiebe drw529 11226441
 import java.util.TreeMap;
 
+/**
+ * Handles the command for doctor-patient assignment
+ */
 public class AssignDoctor extends CommandStatus {
+    /**
+     * Executes the task and stores the result
+     * @param healthNum - health number of a patient
+     * @param docName - name of a doctor
+     */
     public AssignDoctor(int healthNum, String docName) {
         TreeMap<Integer, Patient> patientDict = PatientMapAccess.dictionary();
         TreeMap<String, Doctor> doctorDict = DoctorMapAccess.dictionary();

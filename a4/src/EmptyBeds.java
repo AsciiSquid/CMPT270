@@ -1,5 +1,12 @@
 //Dawson Wiebe drw529 11226441
+
+/**
+ * Executes the displayEmptyBeds command for the HospitalSystem and stores the result
+ */
 public class EmptyBeds extends CommandStatus {
+    /**
+     * Executes the task and stores the result
+     */
     public EmptyBeds() {
         Ward ward;
         try {

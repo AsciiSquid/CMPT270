@@ -1,6 +1,9 @@
 //Dawson Wiebe drw529 11226441
 import java.util.TreeMap;
 
+/**
+ * Static holder for the HospitalSystem doctors map
+ */
 public class DoctorMapAccess {
     private static TreeMap<String, Doctor> dictionary;
 

@@ -255,7 +255,7 @@ public class HospitalSystem
                 ,"drop doctor-patient association"
                 ,"display current system state"
         };
-        if (ioInterface != null) {
+        if (ioInterface != null) { //in the event the user selects 'cancel' on startup
             try {
                 while (task != 1) {
                     task = ioInterface.readChoice(taskOptions);

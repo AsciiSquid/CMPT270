@@ -5,6 +5,11 @@ public class DialogIO extends AbstractDialogIO {
 
     public DialogIO() {}
 
+    /**
+     * Prompts the user for text input
+     * @param prompt the string to be displayed as a prompt
+     * @return user input
+     */
     public String readString(String prompt) {
         String selection = JOptionPane.showInputDialog(
                 null,
@@ -19,6 +24,11 @@ public class DialogIO extends AbstractDialogIO {
         }
     }
 
+    /**
+     * Prompts the user for numeric input
+     * @param prompt the string to be displayed as a prompt
+     * @return user input
+     */
     public int readInt(String prompt) {
         String selection = JOptionPane.showInputDialog(
                 null,
@@ -36,6 +46,10 @@ public class DialogIO extends AbstractDialogIO {
         }
     }
 
+    /**
+     * Displays a message to the user
+     * @param outString the string whose value is to be displayed
+     */
     public void outputString(String outString) {
         JOptionPane.showMessageDialog(null, outString);
     }

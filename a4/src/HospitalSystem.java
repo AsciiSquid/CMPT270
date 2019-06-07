@@ -1,4 +1,5 @@
 //Dawson Wiebe drw529 11226441
+import javax.swing.*;
 import java.util.TreeMap;
 import java.util.Scanner;
 import java.util.Collection;
@@ -255,8 +256,9 @@ public class HospitalSystem
         int task = -1;
 
         HospitalSystem sys = new HospitalSystem();
-        //TEMP: to test consoleIO class
-        ioInterface = new ConsoleIO(consoleIn);
+        //TEMP: to test DialogIO class
+        JOptionPane.showMessageDialog(null, "Starting dialog system");
+        ioInterface = new DialogIO();
 
         String[] taskOptions = {
                 "quit"

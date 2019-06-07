@@ -25,7 +25,7 @@ public abstract class AbstractDialogIO implements InputOutputInterface {
             return 0; // Cancel or X button clicked
         for (int i = 0; i < options.length; i++)
             if (selection.equals(options[i]))
-                return i;
+                return i+1;
         JOptionPane.showMessageDialog(null, "Illegal choice: " + selection + "\n");
         return readChoice(options);
     }

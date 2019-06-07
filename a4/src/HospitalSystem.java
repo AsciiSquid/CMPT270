@@ -57,9 +57,9 @@ public class HospitalSystem
         ioInterface.outputString("Initializing the system...");
         ioInterface.outputString("Getting Ward information...");
 
-        String name = ioInterface.readString("Enter the name of the Ward: ");
-        int firstBedNum = ioInterface.readInt("Enter the integer label of the first bed: ");
-        int lastBedNum = ioInterface.readInt("Enter the integer label of the last bed: ");
+        String name = ioInterface.readString("Enter the name of the Ward");
+        int firstBedNum = ioInterface.readInt("Enter the integer label of the first bed");
+        int lastBedNum = ioInterface.readInt("Enter the integer label of the last bed");
 
         WardAccess.initialize(name, firstBedNum, lastBedNum);
         ward = WardAccess.ward();
@@ -71,18 +71,14 @@ public class HospitalSystem
      */
     public void addPatient()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        ioInterface.outputString("Getting Patient information...");
+        String name = ioInterface.readString("Enter the name of the patient");
 
-        System.out.println("Getting Patient information...");
-        System.out.print("Enter the name of the patient: ");
-        String name = consoleIn.nextLine();
+        int healthNum = ioInterface.readInt("Enter the health number of the patient");
 
-        System.out.print("Enter the health number of the patient: ");
-        int healthNum = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
         if (patients.containsKey(healthNum))
         {
-            throw new RuntimeException("Patient with the health number " + healthNum + " already exsists");
+            throw new RuntimeException("Patient with the health number " + healthNum + " already exists");
         }
         else
         {
@@ -105,14 +101,10 @@ public class HospitalSystem
      */
     public void addDoctor()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        ioInterface.outputString("Getting Doctor information...");
+        String name = ioInterface.readString("Enter the name of the doctor");
 
-        System.out.println("Getting Patient information...");
-        System.out.print("Enter the name of the doctor: ");
-        String name = consoleIn.nextLine();
-
-        System.out.print("Is the doctor a surgeon? (yes or no)");
-        String response = consoleIn.nextLine();
+        String response = ioInterface.readString("Is the doctor a surgeon? (yes or no)");
         boolean isSurgeon = response.charAt(0) == 'y' || response.charAt(0) == 'Y';
 
         new NewDoctor(name, isSurgeon);
@@ -123,17 +115,12 @@ public class HospitalSystem
      */
     public void assignDoctorToPatient()
     {
-        Scanner consoleIn = new Scanner(System.in);
+        ioInterface.outputString("Assigning a new Doctor-Patient Association...");
+        ioInterface.outputString("Getting Patient information...");
+        int healthNumber = ioInterface.readInt("Enter the health number of the patient");
 
-        System.out.println("Assigning a new Doctor-Patient Association...");
-        System.out.println("Getting Patient information...");
-        System.out.print("Enter the health number of the patient: ");
-        int healthNumber = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
-
-        System.out.println("Getting Doctor information...");
-        System.out.print("Enter the name of the doctor: ");
-        String name = consoleIn.nextLine();
+        ioInterface.outputString("Getting Doctor information...");
+        String name = ioInterface.readString("Enter the name of the doctor");
 
         new AssignDoctor(healthNumber, name);
     }
@@ -143,13 +130,11 @@ public class HospitalSystem
      */
     public void assignBed()
     {
-        Scanner consoleIn = new Scanner(System.in);
+         
 
-        System.out.println("Assigning a Patient to a Bed...");
-        System.out.println("Getting Patient information...");
-        System.out.print("Enter the health number of the patient: ");
-        int healthNumber = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        ioInterface.outputString("Assigning a Patient to a Bed...");
+        ioInterface.outputString("Getting Patient information...");
+        int healthNumber = ioInterface.readInt("Enter the health number of the patient");
 
         Patient p = patients.get(healthNumber);
         if (p == null)
@@ -160,9 +145,7 @@ public class HospitalSystem
             throw new RuntimeException(" Patient " + p
                     + " is already in a bed so cannot be assigned a new bed");
 
-        System.out.print("Enter the bed number for the patient: ");
-        int bedNum = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        int bedNum = ioInterface.readInt("Enter the bed number for the patient");
         if (bedNum < ward.getMinBedLabel() || bedNum > ward.getMaxBedLabel())
             throw new RuntimeException("Bed label " + bedNum + " is not valid, as "
                     + "the value must be between " + ward.getMinBedLabel()
@@ -177,17 +160,14 @@ public class HospitalSystem
      */
     public void dropAssociation()
     {
-        Scanner consoleIn = new Scanner(System.in);
+         
 
-        System.out.println("Dropping a new Doctor-Patient Association...");
-        System.out.println("Getting Patient information...");
-        System.out.print("Enter the health number of the patient: ");
-        int healthNumber = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        ioInterface.outputString("Dropping a new Doctor-Patient Association...");
+        ioInterface.outputString("Getting Patient information...");
+        int healthNumber = ioInterface.readInt("Enter the health number of the patient");
 
-        System.out.println("Getting Doctor information...");
-        System.out.print("Enter the name of the doctor: ");
-        String name = consoleIn.nextLine();
+        ioInterface.outputString("Getting Doctor information...");
+        String name = ioInterface.readString("Enter the name of the doctor");
 
         new DropDoctor(healthNumber, name);
     }
@@ -197,7 +177,7 @@ public class HospitalSystem
      */
     public void systemState()
     {
-        System.out.println(this.toString());
+         ioInterface.outputString(this.toString());
     }
 
     /**
@@ -231,13 +211,11 @@ public class HospitalSystem
      */
     public void releasePatient()
     {
-        Scanner consoleIn = new Scanner(System.in);
+         
 
-        System.out.println("Releasing a patient from the system...");
-        System.out.println("Getting Patient information...");
-        System.out.print("Enter the health number of the patient: ");
-        int healthNumber = consoleIn.nextInt();
-        consoleIn.nextLine();  // discard the remainder of the line
+        ioInterface.outputString("Releasing a patient from the system...");
+        ioInterface.outputString("Getting Patient information...");
+        int healthNumber = ioInterface.readInt("Enter the health number of the patient");
 
         Patient p = patients.get(healthNumber);
         if (p == null)
@@ -253,7 +231,7 @@ public class HospitalSystem
         }
 
         patients.remove(p.getHealthNumber());
-        System.out.println(p.getName() + " has been released from the system.");
+        ioInterface.outputString(p.getName() + " has been released from the system.");
     }
 
     /**
@@ -301,10 +279,10 @@ public class HospitalSystem
                     else if (task == 9)
                         sys.systemState();
                     else
-                        System.out.println("Invalid option, try again.");
+                         ioInterface.outputString("Invalid option, try again.");
                 }
             } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
+                 ioInterface.outputString(e.getMessage());
             }
         }
     }

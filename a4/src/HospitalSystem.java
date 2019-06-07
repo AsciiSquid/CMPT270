@@ -25,7 +25,7 @@ public class HospitalSystem
      */
     private Ward ward;
 
-    protected static InputOutputInterface ioInterface;
+    private static InputOutputInterface ioInterface;
 
     /**
      * Initialize an instance of the hospital ward
@@ -36,20 +36,30 @@ public class HospitalSystem
         patients = PatientMapAccess.dictionary();
         doctors = DoctorMapAccess.dictionary();
 
-        // get the ward information
-        Scanner consoleIn = new Scanner(System.in);
+        int interfaceOption = JOptionPane.showConfirmDialog(
+                null,
+                "Use dialog interface?\n"
+                        + "(Select No to open terminal interface)",
+                "System Interface",
+                JOptionPane.YES_NO_CANCEL_OPTION
+        );
+        switch (interfaceOption) {
+            case 0:
+                ioInterface = new DialogIO();
+                break;
+            case 1:
+                ioInterface = new ConsoleIO(new Scanner(System.in));
+                break;
+            default:
+                return;
+        }
 
-        System.out.println("Initializing the system...");
-        System.out.println("Getting Ward information...");
-        System.out.print("Enter the name of the Ward: ");
-        String name = consoleIn.nextLine();
-        System.out.print("Enter the integer label of the first bed: ");
-        int firstBedNum = consoleIn.nextInt();
-        consoleIn.nextLine();
+        ioInterface.outputString("Initializing the system...");
+        ioInterface.outputString("Getting Ward information...");
 
-        System.out.print("Enter the integer label of the last bed: ");
-        int lastBedNum = consoleIn.nextInt();
-        consoleIn.nextLine();
+        String name = ioInterface.readString("Enter the name of the Ward: ");
+        int firstBedNum = ioInterface.readInt("Enter the integer label of the first bed: ");
+        int lastBedNum = ioInterface.readInt("Enter the integer label of the last bed: ");
 
         WardAccess.initialize(name, firstBedNum, lastBedNum);
         ward = WardAccess.ward();
@@ -252,13 +262,9 @@ public class HospitalSystem
      */
     public static void main(String[] args)
     {
-        Scanner consoleIn = new Scanner(System.in);
         int task = -1;
 
         HospitalSystem sys = new HospitalSystem();
-        //TEMP: to test DialogIO class
-        JOptionPane.showMessageDialog(null, "Starting dialog system");
-        ioInterface = new DialogIO();
 
         String[] taskOptions = {
                 "quit"
@@ -271,35 +277,35 @@ public class HospitalSystem
                 ,"drop doctor-patient association"
                 ,"display current system state"
         };
-        try{
-            while(task != 1) {
-                task = ioInterface.readChoice(taskOptions);
+        if (ioInterface != null) {
+            try {
+                while (task != 1) {
+                    task = ioInterface.readChoice(taskOptions);
 
-                if (task == 1)
-                    sys.systemState();
-                else if (task == 2)
-                    sys.addPatient();
-                else if (task == 3)
-                    sys.addDoctor();
-                else if (task == 4)
-                    sys.assignDoctorToPatient();
-                else if (task == 5)
-                    sys.displayEmptyBeds();
-                else if (task == 6)
-                    sys.assignBed();
-                else if (task == 7)
-                    sys.releasePatient();
-                else if (task == 8)
-                    sys.dropAssociation();
-                else if (task == 9)
-                    sys.systemState();
-                else
-                    System.out.println("Invalid option, try again.");
+                    if (task == 1)
+                        sys.systemState();
+                    else if (task == 2)
+                        sys.addPatient();
+                    else if (task == 3)
+                        sys.addDoctor();
+                    else if (task == 4)
+                        sys.assignDoctorToPatient();
+                    else if (task == 5)
+                        sys.displayEmptyBeds();
+                    else if (task == 6)
+                        sys.assignBed();
+                    else if (task == 7)
+                        sys.releasePatient();
+                    else if (task == 8)
+                        sys.dropAssociation();
+                    else if (task == 9)
+                        sys.systemState();
+                    else
+                        System.out.println("Invalid option, try again.");
+                }
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (RuntimeException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            consoleIn.close();
         }
     }
 }

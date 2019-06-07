@@ -4,21 +4,25 @@ import java.util.Scanner;
 
 public class ConsoleIO implements InputOutputInterface {
 
-    private Scanner scan;
+    private static Scanner scan;
 
-    public ConsoleIO(Scanner scan) {
-        this.scan = scan;
+    public ConsoleIO(Scanner s) {
+        if (s == null) {
+            scan = new Scanner(System.in);
+        } else {
+            scan = s;
+        }
     }
 
     public String readString(String prompt) {
         System.out.print(prompt + ": ");
-        return this.scan.nextLine();
+        return scan.nextLine();
     }
 
     public int readInt(String prompt) {
         System.out.print(prompt + ": ");
-        int value = this.scan.nextInt();
-        this.scan.nextLine(); //clears input buffer
+        int value = scan.nextInt();
+        scan.nextLine(); //clears input buffer
         return value;
     }
 
@@ -28,12 +32,13 @@ public class ConsoleIO implements InputOutputInterface {
             System.out.println(i + 1 + ".\t" + options[i]);
         }
         System.out.print("Task number: ");
-        task = this.scan.nextInt();
-        this.scan.nextLine(); //clear input buffer
+        task = scan.nextInt();
+        scan.nextLine(); //clear input buffer
         return task;
     }
 
     public void outputString(String outString) {
         System.out.println(outString);
     }
+
 }

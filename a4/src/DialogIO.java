@@ -39,4 +39,5 @@ public class DialogIO extends AbstractDialogIO {
     public void outputString(String outString) {
         JOptionPane.showMessageDialog(null, outString);
     }
+
 }

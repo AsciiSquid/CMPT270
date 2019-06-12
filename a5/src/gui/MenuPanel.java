@@ -5,11 +5,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Menu Panel that directs to all other system functions in the GUI
+ */
 public class MenuPanel extends JPanel {
 
     public MenuPanel() {
         setLayout(new BorderLayout());
-
+        //Opens the Patient Operations Window
         JButton patientButton = new JButton("Patients");
         add(patientButton, BorderLayout.WEST);
 
@@ -20,7 +23,7 @@ public class MenuPanel extends JPanel {
                 frame.setVisible(true);
             }
         });
-
+        //Opens the Doctor Operations Window
         JButton doctorButton = new JButton("Doctors");
         add(doctorButton, BorderLayout.EAST);
 
@@ -31,7 +34,7 @@ public class MenuPanel extends JPanel {
                 frame.setVisible(true);
             }
         });
-
+        //Opens Ward Operations Window
         JButton wardButton = new JButton("Ward");
         add(wardButton, BorderLayout.CENTER);
 
@@ -42,7 +45,7 @@ public class MenuPanel extends JPanel {
                 frame.setVisible(true);
             }
         });
-
+        //Exits the Program
         JButton exitButton = new JButton("Exit");
         add(exitButton, BorderLayout.SOUTH);
 

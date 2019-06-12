@@ -6,10 +6,17 @@ import entities.Doctor;
 import containers.DoctorMapAccess;
 import entities.Surgeon;
 
+/**
+ * Window frame to hold the DoctorPanel
+ */
 public class DoctorFrame extends JFrame {
-    public static final int DEFAULT_WIDTH = 350;
-    public static final int DEFAULT_HEIGHT = 400;
+    public static final int DEFAULT_WIDTH = 300;
+    public static final int DEFAULT_HEIGHT = 200;
 
+    /**
+     * Generates the doctor window based on the provided Doctor class
+     * @param name Name of the doctor to retrieve
+     */
     public DoctorFrame(String name) {
         Doctor doctor = DoctorMapAccess.dictionary().get(name);
         if (doctor != null) {

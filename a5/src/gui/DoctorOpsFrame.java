@@ -2,6 +2,9 @@ package gui;
 
 import javax.swing.JFrame;
 
+/**
+ * Window for the DoctorOpsPanel
+ */
 public class DoctorOpsFrame extends JFrame {
     /** The standard width for the frame. */
     public static final int DEFAULT_WIDTH = 350;

@@ -38,6 +38,7 @@ public class MenuPanel extends JPanel {
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 exitButton.getTopLevelAncestor().setVisible(false);
+                System.exit(0);
             }
         });
     }

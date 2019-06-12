@@ -4,10 +4,10 @@ import javax.swing.JFrame;
 
 public class MenuFrame extends JFrame {
     /** The standard width for the frame. */
-    public static final int DEFAULT_WIDTH = 350;
+    public static final int DEFAULT_WIDTH = 300;
 
     /** The standard height for the frame. */
-    public static final int DEFAULT_HEIGHT = 400;
+    public static final int DEFAULT_HEIGHT = 180;
 
     public MenuFrame() {
         setTitle("Hospital System");

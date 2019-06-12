@@ -26,7 +26,7 @@ public class WardFrame extends JFrame {
         int height;
         height =
                 Math.min(DEFAULT_HEIGHT,
-                        30 + 50 * (ward.getMaxBedLabel() - ward.getMinBedLabel() + 1));
+                        30 + 80 * (ward.getMaxBedLabel() - ward.getMinBedLabel() + 1));
         setSize(DEFAULT_WIDTH, height);
         WardPanel panel = new WardPanel();
         add(panel);

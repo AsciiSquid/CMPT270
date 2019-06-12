@@ -7,7 +7,7 @@ public class DoctorOpsFrame extends JFrame {
     public static final int DEFAULT_WIDTH = 350;
 
     /** The standard height for the frame. */
-    public static final int DEFAULT_HEIGHT = 400;
+    public static final int DEFAULT_HEIGHT = 200;
 
     public DoctorOpsFrame() {
         setTitle("Doctor Operations");

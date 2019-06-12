@@ -32,8 +32,19 @@ public class MenuPanel extends JPanel {
             }
         });
 
+        JButton wardButton = new JButton("Ward");
+        add(wardButton, BorderLayout.CENTER);
+
+        wardButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                WardFrame frame = new WardFrame();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setVisible(true);
+            }
+        });
+
         JButton exitButton = new JButton("Exit");
-        add(exitButton, BorderLayout.CENTER);
+        add(exitButton, BorderLayout.SOUTH);
 
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {

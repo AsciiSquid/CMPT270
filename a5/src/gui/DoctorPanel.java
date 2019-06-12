@@ -4,7 +4,6 @@ import javax.swing.*;
 
 import commands.*;
 import entities.Doctor;
-import entities.Patient;
 import entities.Person;
 
 import java.awt.*;

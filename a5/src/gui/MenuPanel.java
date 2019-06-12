@@ -11,7 +11,7 @@ public class MenuPanel extends JPanel {
         setLayout(new BorderLayout());
 
         JButton patientButton = new JButton("Patients");
-        add(patientButton, BorderLayout.CENTER);
+        add(patientButton, BorderLayout.WEST);
 
         patientButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -21,5 +21,24 @@ public class MenuPanel extends JPanel {
             }
         });
 
+        JButton doctorButton = new JButton("Doctors");
+        add(doctorButton, BorderLayout.EAST);
+
+        doctorButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                DoctorOpsFrame frame = new DoctorOpsFrame();
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setVisible(true);
+            }
+        });
+
+        JButton exitButton = new JButton("Exit");
+        add(exitButton, BorderLayout.CENTER);
+
+        exitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                exitButton.getTopLevelAncestor().setVisible(false);
+            }
+        });
     }
 }

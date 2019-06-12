@@ -3,13 +3,16 @@ package gui;
 import javax.swing.JFrame;
 
 public class DoctorOpsFrame extends JFrame {
-    private static final int DEFAULT_WIDTH = 400;
-    private static final int DEFAULT_HEIGHT = 300;
+    /** The standard width for the frame. */
+    public static final int DEFAULT_WIDTH = 350;
 
-    public DoctorOpsFrame(){
-        setTitle("Patient Operations");
+    /** The standard height for the frame. */
+    public static final int DEFAULT_HEIGHT = 400;
+
+    public DoctorOpsFrame() {
+        setTitle("Doctor Operations");
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        PatientOpsPanel panel = new PatientOpsPanel();
+        DoctorOpsPanel panel = new DoctorOpsPanel();
         add(panel);
     }
 }

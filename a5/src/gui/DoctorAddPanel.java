@@ -42,7 +42,7 @@ public class DoctorAddPanel extends JPanel {
         add(Box.createVerticalGlue());
 
         // add a panel with the field for the entry of the doctor's name
-        namePanel = new ValueEntryPanel("name");
+        namePanel = new ValueEntryPanel("Name");
         namePanel.setMaximumSize(namePanel.getPreferredSize());
         add(namePanel);
         namePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -98,8 +98,9 @@ public class DoctorAddPanel extends JPanel {
                 error.setMaximumSize(error.getPreferredSize());
                 add(error);
                 error.setAlignmentX(Component.CENTER_ALIGNMENT);
+                error.setBackground(new Color(255, 200, 190));
                 add(Box.createVerticalGlue());
-                revalidate(); // redraw the window as it has changed
+                revalidate();
             }
         }
     }

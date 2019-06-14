@@ -5,36 +5,44 @@ import javax.swing.*;
 
 import commands.*;
 import entities.Doctor;
-import entities.Person;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DoctorPanel extends JPanel {
-    public DoctorPanel(Doctor doctor) {
-        build(doctor);
-    }
+    /**
+     * Label to hold the results of the last performed action
+     */
+    private JLabel statusLabel;
 
-    private void build(Doctor doctor) {
+    public DoctorPanel(Doctor doctor) {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         add(new JLabel("Name: " + doctor.getName()));
 
-        add(new JLabel("  ")); // blank line in the panel for spacing
-
-        // add an empty panel to force the add doctor and exit components to the bottom
-        JPanel emptyPanel = new JPanel();
-        add(emptyPanel);
-        emptyPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        statusLabel = new JLabel(" ");
+        add(statusLabel);
 
         JPanel addPatientPanel = addPatientPanel(doctor);
         add(addPatientPanel);
         addPatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
         addPatientPanel.setMaximumSize(addPatientPanel.getPreferredSize());
 
+        JPanel searchPatientPanel = searchPatientPanel(doctor);
+        add(searchPatientPanel);
+        searchPatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        searchPatientPanel.setMaximumSize(searchPatientPanel.getPreferredSize());
+
+        JPanel removePatientPanel = removePatientPanel(doctor);
+        add(removePatientPanel);
+        removePatientPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        removePatientPanel.setMaximumSize(removePatientPanel.getPreferredSize());
+
         add(new JLabel("  ")); // blank line in the panel for spacing
+
         final JButton exitButton = new JButton("Exit");
         add(exitButton);
+        exitButton.setAlignmentY(Component.BOTTOM_ALIGNMENT);
         exitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 exitButton.getTopLevelAncestor().setVisible(false);
@@ -42,27 +50,19 @@ public class DoctorPanel extends JPanel {
         });
     }
 
-    private JPanel listDoctorPanel(final Person patient, final Doctor doctor) {
-        JPanel patientPanel = new JPanel();
-        patientPanel.add(new JLabel("  "));
-        patientPanel.add(new JLabel(patient.getName()));
-        JButton removeButton = new JButton("remove");
-        patientPanel.add(removeButton);
-        removeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                DropDoctor dropAssoc = new DropDoctor();
-                dropAssoc.dropAssociation(doctor.getName(), patient.getHealthNumber());
-                if (dropAssoc.wasSuccessful()) {
-                    // recreate the panel as it has changed
-                    removeAll();
-                    build(doctor);
-                    revalidate();
-                } else {
-                    JOptionPane.showMessageDialog(DoctorPanel.this, dropAssoc.getErrorMessage());
-                }
+    private static int parseHealthNum(JTextField inputField) {
+        String valueAsString = inputField.getText();
+        int healthNum = -1;
+        if (valueAsString != null && valueAsString.length() > 0) {
+            try {
+                healthNum = Integer.parseInt(valueAsString);
+            } catch (NumberFormatException e) {
+                inputField.setText("Not int: " + inputField.getText());
+                inputField.revalidate();
+                return healthNum;
             }
-        });
-        return patientPanel;
+        }
+        return healthNum;
     }
 
     private JPanel addPatientPanel(final Doctor doctor) {
@@ -72,29 +72,68 @@ public class DoctorPanel extends JPanel {
         addPatientPanel.add(textField);
         textField.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                String valueAsString = textField.getText();
-                int healthNum = -1;
-                if (valueAsString != null && valueAsString.length() > 0) {
-                    try {
-                        healthNum = Integer.parseInt(valueAsString);
-                    } catch (NumberFormatException e) {
-                        textField.setText("Not int: " + textField.getText());
-                        textField.revalidate();
-                        return;
-                    }
-                }
+                int healthNum = parseHealthNum(textField);
+                if (healthNum == -1) { return; }
                 AssignDoctor addAssoc = new AssignDoctor();
                 addAssoc.assignDoctor(doctor.getName(), healthNum);
                 if (addAssoc.wasSuccessful()) {
-                    // recreate the panel as it has changed
-                    removeAll();
-                    build(doctor);
+                    // Update status label
+                    statusLabel.setText(healthNum + " has been assigned");
                     revalidate();
                 } else {
+                    statusLabel.setText(addAssoc.getErrorMessage());
                     JOptionPane.showMessageDialog(DoctorPanel.this, addAssoc.getErrorMessage());
+                    revalidate();
                 }
             }
         });
         return addPatientPanel;
+    }
+
+    private JPanel searchPatientPanel(final Doctor doctor) {
+        JPanel searchPanel = new JPanel();
+        searchPanel.add(new JLabel("Search Patient"));
+        final JTextField searchField = new JTextField(10);
+        searchPanel.add(searchField);
+        searchField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                int healthNum = parseHealthNum(searchField);
+                if (healthNum == -1) { return; }
+                if (doctor.hasPatient(healthNum)) {
+                    PatientFrame pFrame = new PatientFrame(healthNum);
+                    pFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    pFrame.setVisible(true);
+                } else {
+                    statusLabel.setText("Patient " + healthNum + " not found");
+                    revalidate();
+                }
+            }
+        });
+        return searchPanel;
+    }
+
+    private JPanel removePatientPanel(final Doctor doctor) {
+        JPanel removePatientPanel = new JPanel();
+        removePatientPanel.add(new JLabel("Remove patient"));
+        final JTextField delField = new JTextField(10);
+        removePatientPanel.add(delField);
+        delField.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                int healthNum = parseHealthNum(delField);
+                if (healthNum == -1) { return; }
+                DropDoctor rmvAssoc = new DropDoctor();
+                rmvAssoc.dropAssociation(doctor.getName(), healthNum);
+                if (rmvAssoc.wasSuccessful()) {
+                    // Update status label
+                    statusLabel.setText(healthNum + " has been removed");
+                    revalidate();
+                } else {
+                    statusLabel.setText(rmvAssoc.getErrorMessage());
+                    JOptionPane.showMessageDialog(DoctorPanel.this, rmvAssoc.getErrorMessage());
+                    revalidate();
+                }
+            }
+        });
+        return removePatientPanel;
     }
 }

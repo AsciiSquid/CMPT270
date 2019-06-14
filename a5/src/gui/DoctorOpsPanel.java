@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 
 import containers.DoctorMapAccess;
 
+/**
+ * Doctor Operations Panel, used by the DoctorOpsFrame
+ */
 public class DoctorOpsPanel extends JPanel {
     public DoctorOpsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));

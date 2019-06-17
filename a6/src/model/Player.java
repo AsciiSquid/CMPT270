@@ -59,11 +59,11 @@ public class Player extends GameObject {
      * If canFire, fire a laser.
      */
     public void fire() {
-        if (game.laser == null) {
+        //if (game.laser == null) {
             int laserX = x + (width - Laser.WIDTH) / 2;
             int laserY = y - Laser.HEIGHT;
             game.addLaser(new Laser(laserX, laserY, game));
-        }
+        //}
     }
 
     /**

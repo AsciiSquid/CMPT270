@@ -46,6 +46,9 @@ public class Game implements GameControl, GameInfoProvider {
     /** The list of missiles shot by the invaders. */
     protected List<Missile> missilesList;
 
+    /** The list of lasers shot by the player. */
+    protected List<Laser> laserList;
+
     /** The list of explosions as a missile or laser hits something. */
     protected List<Explosion> explosionsList;
 
@@ -75,6 +78,7 @@ public class Game implements GameControl, GameInfoProvider {
         invadersList = new LinkedList<Invader>();
         blocksList = new LinkedList<Block>();
         missilesList = new LinkedList<Missile>();
+        laserList = new LinkedList<Laser>();
         explosionsList = new LinkedList<Explosion>();
         observers = new LinkedList<GameObserver>();
 
@@ -230,10 +234,13 @@ public class Game implements GameControl, GameInfoProvider {
                 explosionIterator.remove();
         }
 
-        if (laser != null) {
-            laser.update();
+        Iterator<Laser> laserIterator = laserList.iterator();
+        while (laserIterator.hasNext()) {
+            Laser laser = laserIterator.next();
+            if (!laser.isDead())
+                laser.update();
             if (laser.isDead())
-                laser = null;
+                laserIterator.remove();
         }
 
         Iterator<Missile> missileIterator = missilesList.iterator();
@@ -337,7 +344,7 @@ public class Game implements GameControl, GameInfoProvider {
         for (Missile missile : missilesList)
             gameObjects.add(missile);
 
-        if (laser != null)
+        for (Laser laser : laserList)
             gameObjects.add(laser);
 
         for (Explosion explosion : explosionsList)
@@ -361,10 +368,7 @@ public class Game implements GameControl, GameInfoProvider {
      * @param laser the laser to be added to the game
      */
     protected void addLaser(Laser laser) {
-        if (this.laser != null)
-            throw new RuntimeException("Cannot shoot a laser when one already exists.");
-
-        this.laser = laser;
+        laserList.add(laser);
     }
 
     /**

@@ -100,10 +100,7 @@ public class HighScores implements Serializable {
             return false;
         else if (highScores.size() < MAX_NUMBER_SCORES_SAVED)
             return true;
-        else if (score > highScores.getLast().getScore())
-            return true;
-        else
-            return false;
+        else return score > highScores.getLast().getScore();
     }
 
     /**

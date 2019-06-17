@@ -7,21 +7,21 @@ import java.util.List;
  * The information provided by the GameModel for outside access.
  */
 public interface GameInfoProvider {
-    public void addObserver(GameObserver observer);
+    void addObserver(GameObserver observer);
 
-    public List<GameObject> getGameObjects();
+    List<GameObject> getGameObjects();
 
-    public boolean isOver();
+    boolean isOver();
 
-    public boolean isPaused();
+    boolean isPaused();
 
-    public int getLevel();
+    int getLevel();
 
-    public int getPlayerScore();
+    int getPlayerScore();
 
-    public int getPlayerLives();
+    int getPlayerLives();
 
-    public int getTick();
+    int getTick();
 
-    public void setInvaderSynchronizationObject(Object reference);
+    void setInvaderSynchronizationObject(Object reference);
 }

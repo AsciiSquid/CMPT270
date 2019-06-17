@@ -8,5 +8,5 @@ public interface GameObserver {
     /**
      * The method to be invoked whenever the game changes.
      */
-    public void gameChanged();
+    void gameChanged();
 }
